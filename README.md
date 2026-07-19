@@ -100,10 +100,10 @@ When a branch is taken:
 
 ```bash
 # Compile
-iverilog -o riscv_sim riscv.v
+iverilog -o risc_sim risc.v
 
 # Run simulation
-vvp riscv_sim
+vvp risc_sim
 
 # View waveforms
 gtkwave mips.vcd
