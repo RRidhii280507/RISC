@@ -1,6 +1,6 @@
-module riscv_tb;
+module risc_tb;
 reg clk1,clk2;
-riscv dut(clk1,clk2);
+risc dut(clk1,clk2);
 integer i;
 initial begin
     clk1=0;
