@@ -1,12 +1,12 @@
-# RISC-V 5-Stage Pipelined Processor (Verilog)
+# MIPS32 5-Stage Pipelined Processor (Verilog)
 
-A Verilog implementation of a simplified **32-bit RISC-V-style pipelined processor** with a **5-stage pipeline** and a testbench for functional simulation.
+A Verilog implementation of a simplified **32-bit MIPS32-style pipelined** processor featuring a classic **5-stage pipeline** architecture along with a testbench for functional simulation.
 
 ---
 
 ## Overview
 
-This project implements a basic pipelined RISC processor that supports a custom instruction set.  
+This project implements a basic pipelined RISC processor modeled after the MIPS32 instruction set architecture (ISA).
 The design uses a **two-phase clock (`clk1` and `clk2`)** to separate pipeline stages and avoid data hazards between adjacent stages.
 
 ---
@@ -66,11 +66,14 @@ The design uses a **two-phase clock (`clk1` and `clk2`)** to separate pipeline s
 ---
 
 ## Instruction Encoding
-[31:26] Opcode (6 bits)
-[25:21] Source Register 1 / Rs (5 bits)
-[20:16] Source Register 2 / Rd (5 bits)
-[15:11] Destination Register (RR-type)
-[15:0] Immediate / Offset (16 bits, sign-extended)
+
+Every instruction is strictly 32 bits wide, mapped using the following field structures:
+
+- Opcode: [31:26] (6 bits) — Identifies the instruction operation code
+- Rs / Rs1: [25:21] (5 bits) — Source register 1
+- Rt / Rs2: [20:16] (5 bits) — Source register 2 (or Destination register for I-type instructions)
+- Rd: [15:11] (5 bits) — Destination register (used exclusively in R-type format)
+- Immediate / Offset: [15:0] (16 bits) — Immediate value or target offset, sign-extended to 32 bits during decode
 
 ---
 
